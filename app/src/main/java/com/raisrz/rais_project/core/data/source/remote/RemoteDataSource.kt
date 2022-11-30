@@ -1,23 +1,19 @@
 package com.raisrz.rais_project.core.data.source.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.raisrz.rais_project.core.data.source.remote.network.ApiResponse
 import com.raisrz.rais_project.core.data.source.remote.network.ApiService
-import com.raisrz.rais_project.core.data.source.remote.responses.SportResponse
 import com.raisrz.rais_project.core.data.source.remote.responses.SportsItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class RemoteDataSource private constructor(private val apiService: ApiService) {
-    companion object {
+@Singleton
+class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
+    /*companion object {
         @Volatile
         private var instance: RemoteDataSource? = null
 
@@ -25,7 +21,7 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
             instance ?: synchronized(this) {
                 instance ?: RemoteDataSource(service)
             }
-    }
+    }*/
     suspend fun getAllSports(): Flow<ApiResponse<List<SportsItem>>> {
         return flow {
             try {

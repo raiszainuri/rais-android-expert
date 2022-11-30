@@ -2,8 +2,8 @@ package com.raisrz.rais_project.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.raisrz.rais_project.core.data.SportRepository
+import com.raisrz.rais_project.core.domain.usecase.SportUsecase
 
-class MainViewModel(sportRepository: SportRepository) : ViewModel() {
-    val sports = sportRepository.getAllSports().asLiveData()
+class MainViewModel(sportUsecase: SportUsecase) : ViewModel() {
+    val sports = sportUsecase.getAllSports().asLiveData()
 }

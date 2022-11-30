@@ -2,12 +2,12 @@ package com.raisrz.rais_project.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.raisrz.rais_project.core.data.SportRepository
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
+import com.raisrz.rais_project.core.domain.usecase.SportUsecase
 
-class DetailViewModel(private val sportRepository: SportRepository) : ViewModel() {
+class DetailViewModel(private val sportUsecase: SportUsecase) : ViewModel() {
     fun setFavSport(sport: SportEntity, newStatus: Boolean) =
-        sportRepository.setFavoriteSport(sport, newStatus)
+        sportUsecase.setFavoriteSport(sport, newStatus)
 
-    fun getFavSport(sportId: String) = sportRepository.getFavoriteSportById(sportId = sportId).asLiveData()
+    fun getFavSport(sportId: String) = sportUsecase.getFavoriteSportById(sportId = sportId).asLiveData()
 }

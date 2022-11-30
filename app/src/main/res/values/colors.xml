@@ -2,7 +2,6 @@
 <resources>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#000000</color>
-    <color name="grey2">#AAA7A7</color>
 
     <color name="color_primary">#f95f6b</color>
     <color name="color_primary_variant">#c12940</color>
@@ -18,5 +17,4 @@
     <color name="color_secondary_variant_night">#007857</color>
     <color name="color_on_secondary_night">@color/white</color>
 
-    <color name="bg_icon">#A9DC76</color>
 </resources>

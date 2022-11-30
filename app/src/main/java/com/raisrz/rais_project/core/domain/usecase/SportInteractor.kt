@@ -1,0 +1,15 @@
+package com.raisrz.rais_project.core.domain.usecase
+
+import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
+import com.raisrz.rais_project.core.domain.repository.ISportRepository
+import javax.inject.Inject
+
+class SportInteractor @Inject constructor(private val sportRepository: ISportRepository): SportUsecase {
+
+    override fun getAllSports() = sportRepository.getAllSports()
+
+    override fun getFavoriteSport() = sportRepository.getFavoriteSport()
+    override fun getFavoriteSportById(sportId: String) = sportRepository.getFavoriteSportById(sportId)
+
+    override fun setFavoriteSport(sportEntity: SportEntity, state: Boolean) = sportRepository.setFavoriteSport(sportEntity, state)
+}

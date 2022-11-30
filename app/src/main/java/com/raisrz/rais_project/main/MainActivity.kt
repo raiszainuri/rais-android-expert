@@ -2,15 +2,16 @@ package com.raisrz.rais_project.main
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.raisrz.rais_project.MyApplication
 import com.raisrz.rais_project.R
 import com.raisrz.rais_project.core.data.Resource
 import com.raisrz.rais_project.core.ui.SportAdapter
@@ -18,15 +19,21 @@ import com.raisrz.rais_project.core.ui.ViewModelFactory
 import com.raisrz.rais_project.databinding.ActivityMainBinding
 import com.raisrz.rais_project.detail.DetailActivity
 import com.raisrz.rais_project.favorite.FavoriteActivity
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val mainViewModel: MainViewModel by viewModels {
+        factory
+    }
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var menuItem: Menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,9 +45,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
             startActivity(intent)
         }
-
-        val factory = ViewModelFactory.getInstance(this)
-        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         mainViewModel.sports.observe(this) { sports ->
             Log.d(TAG, "onCreate: " + sports.data)

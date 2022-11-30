@@ -1,7 +1,6 @@
 package com.raisrz.rais_project.core.utils
 
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
-import com.raisrz.rais_project.core.data.source.remote.responses.SportResponse
 import com.raisrz.rais_project.core.data.source.remote.responses.SportsItem
 
 object DataMapper {

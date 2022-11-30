@@ -1,9 +1,10 @@
-package com.raisrz.rais_project.core.data
+package com.raisrz.rais_project.core.domain.usecase
 
+import com.raisrz.rais_project.core.data.Resource
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
 import kotlinx.coroutines.flow.Flow
 
-interface ISportRepository {
+interface SportUsecase {
  
    fun getAllSports(): Flow<Resource<List<SportEntity>>>
  

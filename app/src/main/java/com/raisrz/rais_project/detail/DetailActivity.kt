@@ -1,25 +1,29 @@
 package com.raisrz.rais_project.detail
 
 import android.content.ContentValues.TAG
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.raisrz.rais_project.MyApplication
 import com.raisrz.rais_project.R
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
 import com.raisrz.rais_project.core.ui.ViewModelFactory
 import com.raisrz.rais_project.databinding.ActivityDetailBinding
-import com.raisrz.rais_project.favorite.FavoriteViewModel
 import kotlinx.android.synthetic.main.activity_detail.*
+import javax.inject.Inject
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var detailViewModel: DetailViewModel
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val detailViewModel: DetailViewModel by viewModels {
+        factory
+    }
+
     private lateinit var binding: ActivityDetailBinding
 
     private lateinit var sportId: String
@@ -27,12 +31,10 @@ class DetailActivity : AppCompatActivity() {
     private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val factory = ViewModelFactory.getInstance(this)
-        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
         val detailSport = intent.getParcelableExtra<SportEntity>(EXTRA_DATA)
         showDetail(detailSport)

@@ -1,20 +1,22 @@
 package com.raisrz.rais_project.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
 import com.raisrz.rais_project.core.data.source.local.room.SportDao
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalDataSource private constructor(private val sportDao: SportDao) {
+@Singleton
+class LocalDataSource @Inject constructor(private val sportDao: SportDao) {
 
-    companion object {
+    /*companion object {
         private var instance: LocalDataSource? = null
 
         fun getInstance(sportDao: SportDao): LocalDataSource =
             instance ?: synchronized(this) {
                 instance ?: LocalDataSource(sportDao)
             }
-    }
+    }*/
 
     fun getAllSports(): Flow<List<SportEntity>> = sportDao.getAllSports()
 

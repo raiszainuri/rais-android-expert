@@ -3,24 +3,17 @@ package com.raisrz.rais_project.core.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemLongClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.raisrz.rais_project.R
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
 import com.raisrz.rais_project.databinding.ItemListSportBinding
-import java.util.ArrayList
 
 class SportAdapter : RecyclerView.Adapter<SportAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<SportEntity>()
-    //private lateinit var onLongItemClickCallback: OnLongItemClickCallback
     var onItemClick: ((SportEntity) -> Unit)? = null
     var onLongItemClick: ((SportEntity) -> Unit)? = null
-
-//    interface OnLongItemClickCallback {
-//        fun onLongItemClicked(data: SportEntity)
-//    }
 
     fun setData(newListData: List<SportEntity>?) {
         if (newListData == null) return
@@ -28,10 +21,6 @@ class SportAdapter : RecyclerView.Adapter<SportAdapter.ListViewHolder>() {
         listData.addAll(newListData)
         notifyDataSetChanged()
     }
-
-//    fun setOnLongItemClickCallback(onLongItemClickCallback: OnLongItemClickCallback) {
-//        this.onLongItemClickCallback = onLongItemClickCallback
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ListViewHolder(

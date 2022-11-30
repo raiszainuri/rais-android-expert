@@ -1,23 +1,26 @@
 package com.raisrz.rais_project.core.data
 
-import androidx.lifecycle.LiveData
 import com.raisrz.rais_project.core.data.source.local.LocalDataSource
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
 import com.raisrz.rais_project.core.data.source.remote.RemoteDataSource
 import com.raisrz.rais_project.core.data.source.remote.network.ApiResponse
 import com.raisrz.rais_project.core.data.source.remote.responses.SportsItem
+import com.raisrz.rais_project.core.domain.repository.ISportRepository
 import com.raisrz.rais_project.core.utils.AppExecutors
 import com.raisrz.rais_project.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SportRepository private constructor(
+@Singleton
+class SportRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : ISportRepository {
 
-    companion object {
+    /*companion object {
         @Volatile
         private var instance: SportRepository? = null
 
@@ -29,7 +32,7 @@ class SportRepository private constructor(
             instance ?: synchronized(this) {
                 instance ?: SportRepository(remoteData, localData, appExecutors)
             }
-    }
+    }*/
 
     override fun getAllSports(): Flow<Resource<List<SportEntity>>> =
         object : NetworkBoundResource<List<SportEntity>, List<SportsItem>>(appExecutors) {
