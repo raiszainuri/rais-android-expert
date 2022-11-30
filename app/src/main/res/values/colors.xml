@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey2">#AAA7A7</color>
+
+    <color name="color_primary">#f95f6b</color>
+    <color name="color_primary_variant">#c12940</color>
+    <color name="color_on_primary">#ffffff</color>
+    <color name="color_secondary">@color/color_primary</color>
+    <color name="color_secondary_variant">@color/color_primary_variant</color>
+    <color name="color_on_secondary">#ffffff</color>
+
+    <color name="color_primary_night">#111B21</color>
+    <color name="color_primary_variant_night">#2A3942</color>
+    <color name="color_on_primary_night">#E9EDEF</color>
+    <color name="color_secondary_night">#00a884</color>
+    <color name="color_secondary_variant_night">#007857</color>
+    <color name="color_on_secondary_night">@color/white</color>
+
+    <color name="bg_icon">#A9DC76</color>
+</resources>
