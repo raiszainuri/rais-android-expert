@@ -1,46 +1,34 @@
 package com.raisrz.rais_project.detail
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.raisrz.rais_project.MyApplication
 import com.raisrz.rais_project.R
-import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
-import com.raisrz.rais_project.core.ui.ViewModelFactory
+import com.raisrz.rais_project.core.domain.model.Sport
 import com.raisrz.rais_project.databinding.ActivityDetailBinding
-import kotlinx.android.synthetic.main.activity_detail.*
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val detailViewModel: DetailViewModel by viewModels {
-        factory
-    }
+    private val detailViewModel: DetailViewModel by viewModels ()
 
     private lateinit var binding: ActivityDetailBinding
-
     private lateinit var sportId: String
 
     private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val detailSport = intent.getParcelableExtra<SportEntity>(EXTRA_DATA)
+        val detailSport = intent.getParcelableExtra<Sport>(EXTRA_DATA)
         showDetail(detailSport)
 
         detailViewModel.getFavSport(sportId).observe(this) {
-            Log.d(TAG, "onCreateDetail: " + it.toString())
             if(it.isNotEmpty()){
                 isFavorite = true
                 setFavoriteState()
@@ -48,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun showDetail(detail: SportEntity?) {
+    private fun showDetail(detail: Sport?) {
         detail?.let {
             supportActionBar?.title = detail.strSport
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -62,14 +50,14 @@ class DetailActivity : AppCompatActivity() {
                 .into(binding.ivIcon)
 
             sportId = detail.idSport
-            tvSportName.text = detail.strSport
-            tvDesc.text = detail.strSportDescription
-            tvFormatSport.text = detail.strFormat
+            binding.tvSportName.text = detail.strSport
+            binding.tvDesc.text = detail.strSportDescription
+            binding.tvFormatSport.text = detail.strFormat
             isFavorite = detail.isFavorite
 
             setFavoriteState()
 
-            fabFavorite.setOnClickListener {
+            binding.fabFavorite.setOnClickListener {
                 if (!isFavorite) {
                     showToast(getString(R.string.str_added))
                 } else {
