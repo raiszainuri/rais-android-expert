@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:menuCategory="container">
         <item
+            android:id="@+id/menu_leak_test"
+            android:icon="@drawable/ic_memory_outline"
+            android:title="@string/str_leak_test"
+            app:showAsAction="ifRoom" />
+        <item
             android:id="@+id/menu_favorite"
             android:icon="@drawable/ic_favorite_outline"
             android:title="@string/str_favorite"

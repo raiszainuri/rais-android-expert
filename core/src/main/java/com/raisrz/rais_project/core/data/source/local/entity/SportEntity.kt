@@ -1,7 +1,6 @@
 package com.raisrz.rais_project.core.data.source.local.entity
 
 import android.os.Parcelable
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,7 +10,6 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "sports")
 data class SportEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo(name = "idSport")
     var idSport: String,
 

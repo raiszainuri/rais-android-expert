@@ -6,11 +6,15 @@
     <string name="str_icon_sport">Icon Sport</string>
     <string name="str_lorem">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</string>
     <string name="str_favorite">Favorite</string>
+    <string name="str_leak_test">Leak Memory Test</string>
     <string name="str_added">Favorite has added</string>
     <string name="str_removed">Favorite has removed</string>
     <string name="str_yes">Yes</string>
     <string name="str_no">No</string>
     <string name="str_confirmation">Confirmation</string>
-    <string name="str_confirmation_desc">Do you wanna remove from favorite?</string>
+    <string name="str_confirmation_desc">Do you want to remove from favorite?</string>
     <string name="title_favorite">Favorite</string>
+    <string name="str_charger_connected">Connected</string>
+    <string name="str_charger_disconnected">Disconnected</string>
+    <string name="str_status">Status</string>
 </resources>

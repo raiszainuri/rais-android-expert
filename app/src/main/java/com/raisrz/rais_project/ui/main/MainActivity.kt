@@ -19,6 +19,7 @@ import com.raisrz.rais_project.core.ui.SportAdapter
 import com.raisrz.rais_project.databinding.ActivityMainBinding
 import com.raisrz.rais_project.ui.ViewModelFactory
 import com.raisrz.rais_project.ui.detail.DetailActivity
+import com.raisrz.rais_project.ui.leak.LeakMemTestActivity
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
 
-        inflater.inflate(R.menu.option_favorite, menu)
+        inflater.inflate(R.menu.option_menu, menu)
         menuItem = menu
 
         return true
@@ -88,6 +89,10 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_favorite -> {
                 val uri = Uri.parse("rais_project://favorite")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
+                true
+            }
+            R.id.menu_leak_test -> {
+                startActivity(Intent(this@MainActivity,LeakMemTestActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

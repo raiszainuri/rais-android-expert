@@ -1,5 +1,6 @@
 package com.raisrz.rais_project.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class SportAdapter : RecyclerView.Adapter<SportAdapter.ListViewHolder>() {
     var onItemClick: ((Sport) -> Unit)? = null
     var onLongItemClick: ((Sport) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Sport>?) {
         if (newListData == null) return
         listData.clear()

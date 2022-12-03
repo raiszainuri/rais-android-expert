@@ -9,11 +9,11 @@ apply from: '../shared_dependencies.gradle'
 
 android {
     namespace 'com.raisrz.rais_project.core'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 22
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
