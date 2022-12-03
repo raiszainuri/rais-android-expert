@@ -11,6 +11,6 @@ interface ISportRepository {
    fun getFavoriteSport(): Flow<List<Sport>>
    fun getFavoriteSportById(sportId: String): Flow<List<Sport>>
  
-   fun setFavoriteSport(sportEntity: Sport, state: Boolean)
+   fun setFavoriteSport(sport: Sport, state: Boolean)
  
 }

@@ -1,6 +1,5 @@
 package com.raisrz.rais_project.core.data.source.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.raisrz.rais_project.core.data.source.local.entity.SportEntity
 import kotlinx.coroutines.flow.Flow

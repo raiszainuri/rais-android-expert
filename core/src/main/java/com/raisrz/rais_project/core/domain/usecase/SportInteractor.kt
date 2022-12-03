@@ -12,5 +12,5 @@ class SportInteractor @Inject constructor(private val sportRepository: ISportRep
     override fun getFavoriteSport() = sportRepository.getFavoriteSport()
     override fun getFavoriteSportById(sportId: String) = sportRepository.getFavoriteSportById(sportId)
 
-    override fun setFavoriteSport(sportEntity: Sport, state: Boolean) = sportRepository.setFavoriteSport(sportEntity, state)
+    override fun setFavoriteSport(sport: Sport, state: Boolean) = sportRepository.setFavoriteSport(sport, state)
 }

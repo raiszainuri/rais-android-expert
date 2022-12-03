@@ -25,8 +25,8 @@ class SportRepository @Inject constructor(
                 return localDataSource.getAllSports().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
-            override fun shouldFetch(data: List<Sport>?): Boolean = true
-            //data == null || data.isEmpty()
+            override fun shouldFetch(data: List<Sport>?): Boolean =
+            data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<SportsItem>>> =
                 remoteDataSource.getAllSports()
