@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "rais-project"
 include ':app'
 include ':core'
+include ':favorite'
