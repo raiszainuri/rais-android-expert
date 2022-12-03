@@ -1,4 +1,4 @@
-package com.raisrz.rais_project.detail
+package com.raisrz.rais_project.ui.detail
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,14 +6,20 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.raisrz.rais_project.MyApplication
 import com.raisrz.rais_project.R
 import com.raisrz.rais_project.core.domain.model.Sport
 import com.raisrz.rais_project.databinding.ActivityDetailBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.raisrz.rais_project.ui.ViewModelFactory
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
-    private val detailViewModel: DetailViewModel by viewModels ()
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val detailViewModel: DetailViewModel by viewModels {
+        factory
+    }
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var sportId: String
@@ -21,6 +27,7 @@ class DetailActivity : AppCompatActivity() {
     private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)

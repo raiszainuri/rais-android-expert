@@ -12,4 +12,5 @@
     <string name="str_no">No</string>
     <string name="str_confirmation">Confirmation</string>
     <string name="str_confirmation_desc">Do you wanna remove from favorite?</string>
+    <string name="title_favorite">Favorite</string>
 </resources>

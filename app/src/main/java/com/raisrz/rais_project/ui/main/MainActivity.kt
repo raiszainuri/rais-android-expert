@@ -1,7 +1,8 @@
-package com.raisrz.rais_project.main
+package com.raisrz.rais_project.ui.main
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,23 +12,30 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.raisrz.rais_project.MyApplication
 import com.raisrz.rais_project.R
 import com.raisrz.rais_project.core.data.Resource
 import com.raisrz.rais_project.core.ui.SportAdapter
 import com.raisrz.rais_project.databinding.ActivityMainBinding
-import com.raisrz.rais_project.detail.DetailActivity
-import com.raisrz.rais_project.favorite.FavoriteActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.raisrz.rais_project.ui.ViewModelFactory
+import com.raisrz.rais_project.ui.detail.DetailActivity
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels ()
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val mainViewModel: MainViewModel by viewModels {
+        factory
+    }
+
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var menuItem: Menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -78,7 +86,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_favorite -> {
-                startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
+                val uri = Uri.parse("rais_project://favorite")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -5,23 +5,27 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.raisrz.rais_project.MyApplication
 import com.raisrz.rais_project.R
 import com.raisrz.rais_project.core.ui.SportAdapter
-import com.raisrz.rais_project.databinding.ActivityFavoriteBinding
-import com.raisrz.rais_project.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.raisrz.rais_project.favorite.databinding.ActivityFavoriteBinding
+import com.raisrz.rais_project.favorite.di.DaggerFavoriteComponent
+import com.raisrz.rais_project.ui.detail.DetailActivity
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavoriteActivity : AppCompatActivity() {
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels ()
+    @Inject
+    lateinit var favoriteViewModel: FavoriteViewModel
 
     private lateinit var binding: ActivityFavoriteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appComponent = (applicationContext as MyApplication).appComponent
+        DaggerFavoriteComponent.factory().create(appComponent).inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
