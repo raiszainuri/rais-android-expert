@@ -32,6 +32,8 @@ buildscript{
     ext.fragment_ktx_version = '1.2.5'
     ext.hilt_version = '2.42'
     ext.leakcanary_version = '2.4'
+    ext.sqlcipher_version = "4.5.2"
+    ext.sql_ktx_version = "2.1.0"
 
     dependencies{
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
