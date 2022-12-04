@@ -62,9 +62,6 @@
 @retrofit2.http.* <methods>;
 }
 
-# Ignore teannotation used for build tooling.
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
-
 # Ignore JSR 305 annotations for embedding nullability information.
 -dontwarn javax.annotation.**
 
@@ -81,6 +78,9 @@
 -keep,allowobfuscation interface <1>
 
 -dontwarn kotlinx.**
+
+-keep public class * extends android.app.Activity
+#-keep @com.raisrz.rais_project.core.di.ExcludeProGuard public class *
 
 ##---------------Begin: proguard configuration for Glide ----------
 -keep public class * implements com.bumptech.glide.module.GlideModule
